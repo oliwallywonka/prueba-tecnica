@@ -2,7 +2,9 @@
     <div class="card">
         <img v-bind:src="movie.imgUrl" v-bind:title="movie.title">
         <h5>{{ movie.title }}</h5>
-        <p>{{ movie.year }}</p>
+        <p>Año: {{ movie.year }}</p>
+        <p v-if="movie.actors">Actores: {{ movie.actors }}</p>
+        <p v-if="movie.actors">Director: {{ movie.director }}</p>
     </div>
 </template>
 

@@ -2,13 +2,15 @@
     <SearchForm :handleSubmit="handleSubmit" />
     <div class="grid">
         <div v-for="movie of movies">
-            <MovieCard :key="movie.id" :movie="movie"/>
+            <MovieCard :key="movie.id" :movie="movie" />
             <button @click="addToFavorite(movie)"> añadir</button>
+            <button @click="handleDetails(movie.id)"> detalles </button>
         </div>
     </div>
 </template>
 
 <script setup lang="ts">
+import { useRouter } from "vue-router";
 import MovieCard from "../components/MovieCard.vue";
 import SearchForm from "../components/SearchForm.vue"
 import { useFavorites } from "../composables/useFavorites";
@@ -16,10 +18,17 @@ import { useMovie } from "../composables/useMovie";
 
 const { loadMovies, movies } = useMovie();
 const { addToFavorite } = useFavorites();
+
+const router = useRouter();
+
 const handleSubmit = async (e: Event) => {
     e.preventDefault();
     console.log("works")
     await loadMovies();
+}
+
+const handleDetails = (movieId: string) => {
+    router.push(`/${movieId}`)
 }
 </script>
 
@@ -31,6 +40,7 @@ const handleSubmit = async (e: Event) => {
     gap: 1rem;
     width: 100%;
 }
+
 .grid div {
     display: flex;
     flex-direction: column;
