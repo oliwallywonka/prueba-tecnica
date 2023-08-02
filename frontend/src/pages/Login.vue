@@ -1,5 +1,5 @@
 <template>
-    <button @click="toggleLoginLogout()">{{ !token ? "login" : "logout" }}</button>
+    <button @click="toggleLoginLogout()">{{ !token ? "iniciar sesion" : "cerrar sesion" }}</button>
 </template>
 
 <script setup lang="ts">
@@ -10,7 +10,7 @@ const user = {
 }
 const { token, login, logout } = useAuth();
 const toggleLoginLogout = async () => {
-    if (!token) {
+    if (token.value === '') {
         console.log(token)
         await login(user.user, user.password)
     } else {
