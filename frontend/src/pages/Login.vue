@@ -1,5 +1,5 @@
 <template>
-    <button @click="toggleLoginLogout()">{{ !token ? "iniciar sesion" : "cerrar sesion" }}</button>
+    <button v-bind:disabled="isLoading" @click="toggleLoginLogout()">{{ !token ? "iniciar sesion" : "cerrar sesion" }}</button>
 </template>
 
 <script setup lang="ts">
@@ -8,10 +8,10 @@ const user = {
     password: "123",
     user: "123",
 }
-const { token, login, logout } = useAuth();
+const { token, isLoading, login, logout } = useAuth();
 const toggleLoginLogout = async () => {
     if (token.value === '') {
-        console.log(token)
+        console.log(token.value)
         await login(user.user, user.password)
     } else {
         logout();
