@@ -2,6 +2,9 @@
 
 * Buscador de peliculas realizado en VUE JS y NODEjs, para la prueba realizada el dia 02/08/2023.
 
+### Preview
+![preview](/preview.png)
+
 ### DIAGRAMA DB
 ![diagrama entidad-relacion](/diagrama.png)
 
