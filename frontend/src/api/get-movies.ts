@@ -2,7 +2,7 @@ import { API_MOVIE_URL } from "../constants/url";
 import { Movie } from "../interfaces/Movie";
 
 const queryTitle = "&s=";
-export const getMoviesFromAPI = async (title: string) => {
+export const getMoviesFromAPI = async (title: string):Promise<Movie[]> => {
   return await fetch(`${API_MOVIE_URL}${queryTitle}${title}`)
     .then(async (result) => await result.json())
     .then((result) => {
@@ -15,6 +15,7 @@ export const getMoviesFromAPI = async (title: string) => {
           year: movie.Year,
         });
       }
+      return movies;
     });
 };
 

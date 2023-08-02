@@ -1,5 +1,5 @@
 <template>
-    <SearchForm :handleSubmit="handleSubmit" />
+    <SearchForm :handleFunction="handleSubmit" />
     <div class="grid">
         <div v-for="movie of movies">
             <MovieCard :key="movie.id" :movie="movie" />
@@ -21,10 +21,9 @@ const { addToFavorite } = useFavorites();
 
 const router = useRouter();
 
-const handleSubmit = async (e: Event) => {
-    e.preventDefault();
+const handleSubmit = async (title: string) => {
     console.log("works")
-    await loadMovies();
+    await loadMovies(title);
 }
 
 const handleDetails = (movieId: string) => {

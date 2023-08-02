@@ -2,7 +2,7 @@ import { defineStore } from "pinia";
 
 import { Movie } from "../interfaces/Movie";
 import MovieData from "../constants/movies.json";
-import { getMovieDetailFromAPI } from "../api/get-movies";
+import { getMovieDetailFromAPI, getMoviesFromAPI } from "../api/get-movies";
 
 interface MovieState {
   movies: Movie[];
@@ -20,14 +20,9 @@ export const movieStore = defineStore(movieStoreKey, {
     movie: null,
   }),
   actions: {
-    async loadMovies() {
+    async loadMovies(title:string) {
       this.isLoading = true;
-      this.movies = await MovieData.Search.map((movie) => ({
-        title: movie.Title,
-        imgUrl: movie.Poster,
-        year: movie.Year,
-        id: movie.imdbID,
-      }));
+      this.movies = await getMoviesFromAPI(title);
       this.isLoading = false;
     },
     async loadDetails(id: string) {
