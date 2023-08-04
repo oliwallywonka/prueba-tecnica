@@ -7,7 +7,19 @@ export const authUser = async (user: string, password: string) => {
     headers: {
       "Content-Type": "application/json",
     },
+    body: JSON.stringify({ usuario: user, password }),
   })
     .then(async (res) => await res.json())
-    .then((res) => res.token);
+    .then(({ user, token }) => ({
+      user: {
+        id: user.id,
+        nombres: user.nombres,
+        primerApellido: user.primerApellido,
+        segundoApellido: user.segundoApellido,
+        usuario: user.usuario,
+      },
+      token,
+    }));
 };
+
+//export const getUserDetails;
