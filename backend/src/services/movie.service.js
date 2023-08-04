@@ -3,9 +3,9 @@ const movieRepository = require("../repositories/movie.repository");
 const userRepository = require("../repositories/user.repository");
 const favoriteRespository = require("../repositories/favorite.respository");
 
-exports.addFavorite = async (movie, userId) => {
+exports.addFavorite = async ({userId, movie}) => {
   try {
-    const userFound = await userRepository.findOne(userId);
+    const userFound = await userRepository.findById(userId);
     if (!userFound) throw new userNotFoundError();
     const movieFound = await movieRepository.findOne(movie.id);
     if (movieFound) {

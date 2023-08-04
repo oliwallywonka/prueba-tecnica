@@ -13,6 +13,12 @@ exports.findOne = async (usuario) => {
 
 exports.findDetails = async (userId) => {
   const res = await models.User.findOne({
+    where: {
+      id: userId
+    },
+    attributes: {
+      exclude: ['password']
+    },
     include: [
       {
         model: UserFavorite,
@@ -25,12 +31,7 @@ exports.findDetails = async (userId) => {
         ]
       }
     ],
-    where: {
-      id: userId
-    },
-    attributes: {
-      exclude: ['password']
-    }
+    
   });
   return res;
 }

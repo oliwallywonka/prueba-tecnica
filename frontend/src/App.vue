@@ -5,7 +5,7 @@
     <Login />
     <nav>
       <router-link to="/">Inicio</router-link>
-      <router-link to="/favoritos">Favoritos</router-link>
+      <router-link v-if="user" to="/favoritos">Favoritos</router-link>
     </nav>
     <router-view></router-view>
   </div>
@@ -27,6 +27,7 @@ const { user } = useAuth()
 
 nav {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
+  width: 100%;
 }
 </style>

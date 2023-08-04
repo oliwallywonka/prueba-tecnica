@@ -8,7 +8,13 @@
 </template>
 
 <script setup lang="ts">
+import { onMounted } from 'vue';
 import MovieCard from '../components/MovieCard.vue';
 import { useFavorites } from '../composables/useFavorites';
-const { movies, removeFromFavorite } = useFavorites();
+import { useAuth } from '../composables/useAuth';
+const { movies, removeFromFavorite, loadFavorites  } = useFavorites();
+const { user, token } = useAuth();
+onMounted(() => {
+    loadFavorites(String(user.value!.id), token.value!)
+})
 </script>

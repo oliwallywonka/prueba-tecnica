@@ -21,7 +21,7 @@ exports.getUser = async (req, res) => {
     if (!userId) return res.status(400).json({ message: "el userId es requrido" });
     try {
         const user = await getUserDetails(Number(userId));
-        return user;
+        return res.status(200).json(user);
     } catch (e) {
         console.log(e)
         if (e instanceof userNotFoundError) return res.status(404).json({ message: "usuario no encontrado " });

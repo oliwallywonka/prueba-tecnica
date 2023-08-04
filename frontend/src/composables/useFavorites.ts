@@ -9,5 +9,6 @@ export const useFavorites = () => {
     movies,
     addToFavorite: actions.addToFavorite,
     removeFromFavorite: actions.removeFromFavorite,
+    loadFavorites: actions.loadFavorites,
   };
 };

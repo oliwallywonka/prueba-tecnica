@@ -34,11 +34,6 @@ const MovieSchema = {
         type: DataTypes.STRING,
         field: 'img_url',
     },
-    plot: {
-        allowNull: false,
-        type: DataTypes.STRING,
-        field: 'plot',
-    },
     director: {
         allowNull: false,
         type: DataTypes.STRING,

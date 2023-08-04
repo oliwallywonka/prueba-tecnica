@@ -3,7 +3,6 @@
     <div class="grid">
         <div v-for="movie of movies">
             <MovieCard :key="movie.id" :movie="movie" />
-            <button @click="addToFavorite(movie)"> añadir</button>
             <button @click="handleDetails(movie.id)"> detalles </button>
         </div>
     </div>
@@ -13,11 +12,9 @@
 import { useRouter } from "vue-router";
 import MovieCard from "../components/MovieCard.vue";
 import SearchForm from "../components/SearchForm.vue"
-import { useFavorites } from "../composables/useFavorites";
 import { useMovie } from "../composables/useMovie";
 
 const { loadMovies, movies } = useMovie();
-const { addToFavorite } = useFavorites();
 
 const router = useRouter();
 
